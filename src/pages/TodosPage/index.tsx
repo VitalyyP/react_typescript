@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import TodoForm from "../../components/TodoForm";
 import TodoList from "../../components/TodoList";
 import { ITodo } from "../../interfaces";
 
-const TodosPage: React.FC = () => {
+const TodosPage: React.FC = React.memo(() => {
   const [todos, setTodos] = useState<ITodo[]>([]);
 
   useEffect(() => {
@@ -34,9 +34,9 @@ const TodosPage: React.FC = () => {
       prev.map((todo) => {
         console.log("WTF");
         if (todo.id === id) {
-          // console.log("todo.completed before: ", todo.completed);
+          console.log("todo.completed before: ", todo.completed);
           todo.completed = !todo.completed;
-          // console.log("todo.completed after: ", todo.completed);
+          console.log("todo.completed after: ", todo.completed);
         }
         return todo;
       })
@@ -44,7 +44,7 @@ const TodosPage: React.FC = () => {
   };
 
   const removeHandler = (id: number) => {
-    const shoudRemove = window.confirm("Are you shore to remove this todo?");
+    const shoudRemove = window.confirm("Are you sure to remove this todo?");
     if (shoudRemove) {
       setTodos((prev) => prev.filter((todo) => todo.id !== id));
     }
@@ -60,6 +60,6 @@ const TodosPage: React.FC = () => {
       />
     </>
   );
-};
+});
 
 export default TodosPage;
