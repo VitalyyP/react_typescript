@@ -1,19 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 
 import TodoForm from "../../components/TodoForm";
 import TodoList from "../../components/TodoList";
 import { ITodo } from "../../interfaces";
 
-const TodosPage: React.FC = React.memo(() => {
-  const [todos, setTodos] = useState<ITodo[]>([]);
-
-  useEffect(() => {
-    // console.log("reading localStorage");
-    const saved = JSON.parse(localStorage.getItem("todos") || "[]") as ITodo[];
-    // console.log(saved);
-    setTodos((prev) => [...saved, ...prev]);
-    // console.log(todos);
-  }, []);
+const TodosPage: React.FC = () => {
+  const [todos, setTodos] = useState<ITodo[]>(() =>
+    JSON.parse(localStorage.getItem("todos") || "[]")
+  );
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -29,14 +23,10 @@ const TodosPage: React.FC = React.memo(() => {
   };
 
   const toggleHandler = (id: number) => {
-    console.log("id: ", id);
-    setTodos((prev) =>
-      prev.map((todo) => {
-        console.log("WTF");
+    setTodos(
+      todos.map((todo) => {
         if (todo.id === id) {
-          console.log("todo.completed before: ", todo.completed);
           todo.completed = !todo.completed;
-          console.log("todo.completed after: ", todo.completed);
         }
         return todo;
       })
@@ -46,7 +36,7 @@ const TodosPage: React.FC = React.memo(() => {
   const removeHandler = (id: number) => {
     const shoudRemove = window.confirm("Are you sure to remove this todo?");
     if (shoudRemove) {
-      setTodos((prev) => prev.filter((todo) => todo.id !== id));
+      setTodos(todos.filter((todo) => todo.id !== id));
     }
   };
 
@@ -60,6 +50,6 @@ const TodosPage: React.FC = React.memo(() => {
       />
     </>
   );
-});
+};
 
 export default TodosPage;

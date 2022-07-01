@@ -7,6 +7,7 @@ import TodosPage from "./pages/TodosPage";
 
 const App: React.FC = () => {
   return (
+    // <React.StrictMode>
     <BrowserRouter>
       <Navbar />
       <div className="container">
@@ -16,6 +17,7 @@ const App: React.FC = () => {
         </Routes>
       </div>
     </BrowserRouter>
+    //</React.StrictMode>
   );
 };
 

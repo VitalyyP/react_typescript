@@ -12,8 +12,6 @@ const TodoForm: React.FC<ITodoForm> = (props) => {
 
   const onPressEnter = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
-      // console.log(state);
-      // setState("");
       props.onAdd(ref.current!.value);
       ref.current!.value = "";
     }
