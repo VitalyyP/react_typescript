@@ -13,3 +13,8 @@ export interface ITodoList {
   onToggle(id: number): void;
   onRemove(id: number): void;
 }
+
+export interface Ireducer {
+  count: number;
+  type: string;
+}

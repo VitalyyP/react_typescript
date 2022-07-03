@@ -12,6 +12,9 @@ const Navbar: React.FC = () => (
             <Link to="/">To do</Link>
           </li>
           <li>
+            <Link to="/counter">Counter</Link>
+          </li>
+          <li>
             <Link to="/about">About us</Link>
           </li>
         </ul>

@@ -198,4 +198,5 @@ const toCapitalCase = (str) =>
     .split(" ")
     .map((el) => el[0].toUpperCase() + el.slice(1))
     .join(" ");
-console.log(toCapitalCase(str));
+// console.log(toCapitalCase(str));
+alert("WOW");

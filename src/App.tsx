@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import AboutPage from "./pages/AboutPage";
 import TodosPage from "./pages/TodosPage";
+import Counter from "./pages/Counter";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<TodosPage />} />
           <Route path="about" element={<AboutPage />} />
+          <Route path="counter" element={<Counter />} />
         </Routes>
       </div>
     </BrowserRouter>
